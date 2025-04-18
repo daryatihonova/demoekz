@@ -1,0 +1,40 @@
+﻿<Window x:Class="Tihonova_demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tihonova_demo"
+        mc:Ignorable="d"
+        Title="Главное окно" Height="450" Width="800" Icon="/Resources/гостиница.ico" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Resources/гостиница.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8" ></Image>
+        <TextBlock Text="Клиенты" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="18"></TextBlock>
+        <ListView x:Name="ClientLV" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding ContractCientRoomId, StringFormat='№ договора: {0}'}"  FontFamily="Segoe UI" ></TextBlock>
+                            <TextBlock Text="{Binding HotelRoom.Name, StringFormat='Шифр гостиничного номера: {0}'}"  FontFamily="Segoe UI" ></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Client.FirstName, StringFormat='{}{0} '}"  FontFamily="Segoe UI" ></TextBlock>
+                                <TextBlock Text="{Binding Client.LastName, StringFormat='{}{0} '}"  FontFamily="Segoe UI" ></TextBlock>
+                                <TextBlock Text="{Binding Client.Surname, StringFormat='{}{0} '}"  FontFamily="Segoe UI" ></TextBlock>
+                            </StackPanel>
+                            <TextBlock Text="{Binding DateImp, StringFormat='Дата заезда: dd.MM.yyyy'}"  FontFamily="Segoe UI" ></TextBlock>
+                            <TextBlock Text="{Binding DateExp, StringFormat='Дата выезда: dd.MM.yyyy'}"  FontFamily="Segoe UI" ></TextBlock>
+                            <Button x:Name="EditBtn" Content="Изменить"  FontFamily="Segoe UI" HorizontalAlignment="Right"  Margin="15" Background="#F4E8D3" Click="EditBtn_Click"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="AddBtn" Grid.Row="2" Content="Добавить"  FontFamily="Segoe UI" HorizontalAlignment="Center"  Margin="10" Background="#67BA80" Click="AddBtn_Click" ></Button>
+
+    </Grid>
+</Window>
